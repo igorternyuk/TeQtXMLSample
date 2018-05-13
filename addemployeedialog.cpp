@@ -1,5 +1,6 @@
 #include "addemployeedialog.hpp"
 #include "ui_addemployeedialog.h"
+#include <QMessageBox>
 
 AddEmployeeDialog::AddEmployeeDialog(QWidget *parent) :
     QDialog(parent),
@@ -15,10 +16,23 @@ AddEmployeeDialog::~AddEmployeeDialog()
 
 void AddEmployeeDialog::on_buttonBox_accepted()
 {
-    mEmployee.setName(ui->txtName->text());
-    mEmployee.setAge(ui->spinnerAge->value());
-    mEmployee.setSalary(ui->spinnerSalary->value());
-    accept();
+    bool ok;
+    auto id = ui->txtID->text().toInt(&ok);
+    if(ok)
+    {
+        mEmployee.setId(id);
+        mEmployee.setName(ui->txtName->text());
+        mEmployee.setAge(ui->spinnerAge->value());
+        mEmployee.setSalary(ui->spinnerSalary->value());
+        accept();
+    }
+    else
+    {
+        QMessageBox::critical(this, "Error",
+                              "The ID must be a numer");
+        reject();
+    }
+
 }
 
 void AddEmployeeDialog::on_buttonBox_rejected()

@@ -1,7 +1,7 @@
 #include "employee.hpp"
 
-Employee::Employee(const QString &name, int age, double salary):
-    mName(name), mAge(age), mSalary(salary)
+Employee::Employee(int id, const QString &name, int age, double salary):
+    mId(id), mName(name), mAge(age), mSalary(salary)
 {}
 
 QString Employee::name() const
@@ -32,4 +32,14 @@ double Employee::salary() const
 void Employee::setSalary(double salary)
 {
     mSalary = salary;
+}
+
+int Employee::id() const
+{
+    return mId;
+}
+
+void Employee::setId(int id)
+{
+    mId = id;
 }

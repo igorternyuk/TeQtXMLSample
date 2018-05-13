@@ -2,6 +2,7 @@
 #define MAINWINDOW_HPP
 
 #include <QMainWindow>
+#include "employee.hpp"
 
 namespace Ui
 {
@@ -26,6 +27,7 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
+    void addEmployee(Employee employee);
 };
 
 #endif // MAINWINDOW_HPP
